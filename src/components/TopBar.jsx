@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 const TopBar = ({ q, setQ }) => {
   const navigate = useNavigate();
@@ -12,15 +13,7 @@ const TopBar = ({ q, setQ }) => {
           </text>
         </svg>
       </Link>
-      <div className="search-wrap">
-        <i className="bi bi-search"></i>
-        <input
-          className="search-input"
-          placeholder="Search"
-          value={q ?? ''}
-          onChange={(e) => setQ(e.target.value)}
-        />
-      </div>
+      <SearchBar query={q} setQuery={setQ} />
       <div className="topbar-actions">
         <button className="icon-btn" title="Help">
           <i className="bi bi-question-circle"></i>

@@ -12,7 +12,6 @@ export const initials = (c) => {
   return (c.first[0] + (c.last ? c.last[0] : '')).toUpperCase();
 }
 
-// 🔥 gender detection
 export function detectGender(name) {
   if (!name) return "unknown";
 
@@ -32,7 +31,6 @@ export function detectGender(name) {
   return "unknown";
 }
 
-// 🔥 avatar selector
 export function getAvatar(name) {
   const gender = detectGender(name);
 
@@ -46,7 +44,6 @@ const Avatar = ({ contact, size = 40, fontSize }) => {
   const [imgError, setImgError] = useState(false);
   const avatarPath = getAvatar(contact?.first);
 
-  // Default text fallback if images are missing
   if (imgError) {
     return (
       <div

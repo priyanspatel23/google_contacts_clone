@@ -1,22 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from './Avatar';
+import FavoriteButton from './FavoriteButton';
 
 const fullName = (c) => `${c.first} ${c.last}`;
 
 const ContactCard = ({ contact, toggleFavorite }) => {
   return (
     <div className="contact-row-wrapper">
-      <button
-        className={`star-btn ${contact.isFavorite ? 'active' : ''}`}
-        onClick={(e) => {
-          e.preventDefault();
-          toggleFavorite(contact.id);
-        }}
-        title={contact.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-      >
-        <i className={`bi ${contact.isFavorite ? 'bi-star-fill' : 'bi-star'}`}></i>
-      </button>
+      <FavoriteButton
+        isFavorite={contact.isFavorite}
+        onToggle={() => toggleFavorite(contact.id)}
+      />
       <Link to={`/contact/${contact.id}`} className="contact-row">
         <Avatar contact={contact} />
         <div className="info">

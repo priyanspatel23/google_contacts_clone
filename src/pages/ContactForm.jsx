@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Avatar, { colorFor } from '../components/Avatar';
+import Avatar from '../components/Avatar';
 
 import GInput from '../components/GInput';
 
@@ -37,7 +37,6 @@ const ContactForm = ({ contacts, setContacts, edit }) => {
   };
 
   const remove = () => {
-    // Soft delete for label/frequent/trash logic
     setContacts((cs) => cs.map((c) => c.id === parseInt(id) ? { ...c, isDeleted: true } : c));
     navigate('/');
   };
@@ -86,7 +85,6 @@ const ContactForm = ({ contacts, setContacts, edit }) => {
         </button>
       </div>
 
-      {/* Name */}
       <div className="field-row">
         <i
           className="bi bi-person"
@@ -115,7 +113,6 @@ const ContactForm = ({ contacts, setContacts, edit }) => {
 
       <hr className="form-divider" />
 
-      {/* Phone */}
       <div className="field-row">
         <i
           className="bi bi-telephone"
@@ -151,7 +148,6 @@ const ContactForm = ({ contacts, setContacts, edit }) => {
         </div>
       </div>
 
-      {/* Email */}
       <div className="field-row">
         <i
           className="bi bi-envelope"

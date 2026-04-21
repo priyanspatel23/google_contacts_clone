@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import Avatar, { initials, colorFor } from '../components/Avatar';
+import Avatar from '../components/Avatar';
+import FavoriteButton from '../components/FavoriteButton';
 
 const fullName = (c) => `${c.first} ${c.last}`;
 
@@ -27,13 +28,11 @@ const ContactDetail = ({ contacts, toggleFavorite }) => {
         <Link to={`/edit/${c.id}`} className="icon-btn" title="Edit">
           <i className="bi bi-pencil"></i>
         </Link>
-        <button
-          className={`icon-btn star-btn ${c.isFavorite ? 'active' : ''}`}
-          onClick={() => toggleFavorite(c.id)}
-          title={c.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-        >
-          <i className={`bi ${c.isFavorite ? 'bi-star-fill' : 'bi-star'}`}></i>
-        </button>
+        <FavoriteButton
+          isFavorite={c.isFavorite}
+          onToggle={() => toggleFavorite(c.id)}
+          className="icon-btn"
+        />
         <button className="icon-btn" title="More">
           <i className="bi bi-three-dots-vertical"></i>
         </button>
